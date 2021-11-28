@@ -1,0 +1,91 @@
+	
+Login to R2 cluster using:
+$ ssh -XC <r2-user-name>@r2.boisestate.edu
+
+You can find <r2-user-name> in the Email from researchcomputing@boisestate.edu with the subject "New R2 Account Created".
+For the rest of this document wherever you see <r2-user-name> replace it with your username. Make sure that you're connected to
+boise state vpn or doing this work on-campus. Follow the instructions in the email to setup a terminal emulator in windows 
+(if you are using windows), for Unix like systems you're all set to go. Lines that start with $ are commands that you should 
+be running those in your terminal.
+
+
+SETTING UP YOUR LIBRARIES
+execute the commands below in your r2 account prompt.
+==========================================================================================================================================
+$ gpu-session
+$ module load cuda10.0/toolkit/10.0.130
+$ module load python/intel/3.7
+
+And then install the below for your user account:
+
+$ pip install --user sklearn 
+$ pip install --user tensorflow==1.15
+Test if GPU is accessible from Tensorflow by typing:
+$ python
+>>> import tensorflow as tf
+>>> assert tf.test.is_gpu_available()
+>>> exit()
+ 
+$ pip install --user keras==2.2.4 
+$ pip install --user opencv-python 
+$ pip install --user pandas 
+$ pip install --user progressbar2 
+$ pip install --user h5py==2.10.0 
+$ pip install --user seaborn
+
+==============================================================================================================================================
+COPY NECESSARY FILES TO R2 FROM YOUR LOCAL MACHINE:
+
+On your local machine, change directory to wherever your train_cnn_script.py script and data folder
+is located and then run the following (if you don't know how to change directory then google it first):
+
+$ scp train_cnn_script.py <r2-user-name>@r2.boisestate.edu:/home/<r2-user-name>/scratch 
+$ scp data/mnist.pkl.gz  <r2-user-name>@r2.boisestate.edu:/home/<r2-user-name>/scratch
+
+
+On your R2 account:
+$ cd scratch
+You should be able to see the files that we transferred over.
+
+$ ls  # <--- should show the below listed files (Note: Don't copy/paste the text after the # symbol) 
+mnist.pkl.gz  train_cnn_script.py
+
+$ mkdir data
+$ mv mnist.pkl.gz data/
+
+To start training (you shouldn't be doing this always, this is just to check if everything works)
+$ python train_cnn_script.py 
+
+===============================================================================================================================================
+USING SLURM TO LAUNCH A .py SCRIPT
+
+
+change the directory to scratch if you're not in scratch already.
+$ cd scratch
+
+make a directory to collect output and error reports
+$ mkdir outputs
+
+make necessary changes such as adding your <r2-user-name> and <your-email-id> to 
+tensorflow-batch-submit.bash file that was provided to you. Copy the modified
+tensorflow-batch-submit.bash to the scratch folder on your r2 account. 
+
+submit the job by executing
+
+$ sbatch tensorflow-batch-submit.bash
+
+you'll receive email saying if the job was succesfull or not
+if you received an email with subject:
+SLURM Job_id=<jobid> Name=PYTHON Ended, Run time 00:00:00, FAILED, ExitCode 1
+then your job failed.
+
+if you received an email with subject:
+SLURM Job_id=<jobid> Name=PYTHON Ended, Run time 00:00:26, COMPLETED, ExitCode 0
+then your job ended properly.  
+
+====================================================================================================================================================
+COPY NECESSARY FILES FROM R2 TO LOCAL MACHINE
+scp <r2-user-name>@r2.boisestate.edu:/home/<r2-user-name>/scratch/outputs/filename.extension /home/<local-username>/Downloads
+
+copy the cnn_model_history_<pid>.pkl file to local and open the pickle file by writing python code (code given in the last commented 
+out section of train_cnn_script.py) and plot the training and validation accuracies. 

@@ -1,0 +1,43 @@
+Using TensorFlow backend.
+WARNING:tensorflow:From train_cnn_script.py:7: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
+
+2020-11-13 16:59:22.708485: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2020-11-13 16:59:22.720460: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2400145000 Hz
+2020-11-13 16:59:22.721980: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x555558fe1fb0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-11-13 16:59:22.722006: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-11-13 16:59:22.726231: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-11-13 16:59:22.929789: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5555590a1250 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-11-13 16:59:22.929828: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla P100-PCIE-12GB, Compute Capability 6.0
+2020-11-13 16:59:22.929834: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (1): Tesla P100-PCIE-12GB, Compute Capability 6.0
+2020-11-13 16:59:22.931126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties: 
+name: Tesla P100-PCIE-12GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:04:00.0
+2020-11-13 16:59:22.932134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 1 with properties: 
+name: Tesla P100-PCIE-12GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:82:00.0
+2020-11-13 16:59:22.932754: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-11-13 16:59:22.934716: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-11-13 16:59:22.936583: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10.0
+2020-11-13 16:59:22.937186: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10.0
+2020-11-13 16:59:22.939346: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10.0
+2020-11-13 16:59:22.941054: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10.0
+2020-11-13 16:59:22.945566: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-13 16:59:22.949431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0, 1
+2020-11-13 16:59:22.949462: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.0
+2020-11-13 16:59:22.951814: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-11-13 16:59:22.951829: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0 1 
+2020-11-13 16:59:22.951837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N N 
+2020-11-13 16:59:22.951842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 1:   N N 
+2020-11-13 16:59:22.954980: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 11338 MB memory) -> physical GPU (device: 0, name: Tesla P100-PCIE-12GB, pci bus id: 0000:04:00.0, compute capability: 6.0)
+2020-11-13 16:59:22.956482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 11338 MB memory) -> physical GPU (device: 1, name: Tesla P100-PCIE-12GB, pci bus id: 0000:82:00.0, compute capability: 6.0)
+WARNING:tensorflow:From /home/jchiasson/.local/lib/python3.7/site-packages/tensorflow_core/python/ops/resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2020-11-13 16:59:24.773002: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10.0
+2020-11-13 16:59:24.996953: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-11-13 16:59:25.980598: W tensorflow/stream_executor/cuda/redzone_allocator.cc:312] Not found: ./bin/ptxas not found
+Relying on driver to perform ptx compilation. This message will be only logged once.
+/home/jchiasson/.local/lib/python3.7/site-packages/tensorflow_core/python/training/tracking/data_structures.py:669: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  if not isinstance(wrapped_dict, collections.Mapping):
+/home/jchiasson/.local/lib/python3.7/site-packages/tensorflow_core/python/framework/indexed_slices.py:339: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+  if not isinstance(values, collections.Sequence):

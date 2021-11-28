@@ -1,0 +1,2 @@
+module list I think. module purge to remove them all, and module load and module unload to do single ones
+And module avail to check your options
